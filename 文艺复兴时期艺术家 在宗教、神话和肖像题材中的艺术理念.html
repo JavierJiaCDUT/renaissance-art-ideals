@@ -1,0 +1,1178 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>文艺复兴时期艺术家在宗教、神话和肖像题材中的艺术理念</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary: #8B4513;
+            --secondary: #D2B48C;
+            --accent: #CD853F;
+            --neutral: #F5F5DC;
+            --base-100: #FEFEFE;
+            --base-content: #2C1810;
+            --conclusion-text: #000000;
+
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--neutral) 0%, var(--base-100) 100%);
+            color: var(--base-content);
+        }
+        
+        .serif {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100vh;
+            background: rgba(139, 69, 19, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+            border-right: 3px solid var(--accent);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .toc-fixed.open {
+            transform: translateX(0);
+        }
+        
+        .main-content {
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            min-height: 70vh;
+        }
+        
+        .hero-text {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(210, 180, 140, 0.1) 100%);
+            padding: 3rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(139, 69, 19, 0.3) 0%, transparent 50%);
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%);
+            margin: 4rem 0;
+            border-radius: 1px;
+        }
+        
+        .pull-quote {
+            border-left: 4px solid var(--accent);
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.125rem;
+            color: var(--conclusion-text);
+
+            background: rgba(210, 180, 140, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .citation {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--accent);
+            transition: all 0.2s ease;
+        }
+        
+        .citation:hover {
+            color: var(--primary);
+            border-bottom-style: solid;
+        }
+        
+        .mermaid-container {
+            position: relative;
+            background: var(--base-100);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(139, 69, 19, 0.1);
+            padding: 2rem;
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+            max-height: 800px;
+        }
+        
+        .mermaid {
+            transform-origin: center center;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .mermaid:active {
+            cursor: grabbing;
+        }
+        
+        .mermaid svg {
+            max-width: none;
+            width: auto;
+            height: auto;
+            background: var(--base-100);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+        
+        /* Enhanced node styling with better contrast */
+        .mermaid .node rect,
+        .mermaid .node circle,
+        .mermaid .node polygon {
+            stroke-width: 2px;
+            stroke: var(--primary) !important;
+            fill: var(--base-100) !important;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        /* Different node colors for better distinction */
+        .mermaid .node:nth-child(1) rect,
+        .mermaid .node:nth-child(1) circle,
+        .mermaid .node:nth-child(1) polygon {
+            fill: #fef2f2 !important;
+            stroke: #dc2626 !important;
+        }
+        
+        .mermaid .node:nth-child(2) rect,
+        .mermaid .node:nth-child(2) circle,
+        .mermaid .node:nth-child(2) polygon {
+            fill: #f0fdf4 !important;
+            stroke: #16a34a !important;
+        }
+        
+        .mermaid .node:nth-child(3) rect,
+        .mermaid .node:nth-child(3) circle,
+        .mermaid .node:nth-child(3) polygon {
+            fill: #eff6ff !important;
+            stroke: #2563eb !important;
+        }
+        
+        .mermaid .node:nth-child(4) rect,
+        .mermaid .node:nth-child(4) circle,
+        .mermaid .node:nth-child(4) polygon {
+            fill: #fefce8 !important;
+            stroke: #ca8a04 !important;
+        }
+        
+        .mermaid .node .label {
+            color: var(--base-content) !important;
+            font-weight: 600 !important;
+            font-size: 13px !important;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+        
+        .mermaid .edgePath .path {
+            stroke: var(--accent) !important;
+            stroke-width: 2px;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: var(--base-100) !important;
+            color: var(--base-content) !important;
+            font-weight: 500 !important;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mermaid-zoom-controls {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 8px;
+            padding: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .zoom-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .zoom-btn:hover {
+            background: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .zoom-btn:active {
+            transform: translateY(0);
+        }
+        
+        .zoom-info {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--base-content);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Table of Contents -->
+    <nav id="toc" class="toc-fixed">
+        <div class="text-white">
+            <h3 class="text-xl font-bold mb-6 serif text-yellow-200">目录</h3>
+            <ul class="space-y-3 text-sm">
+                <li><a href="#introduction" class="block py-2 px-3 rounded hover:bg-white hover:bg-opacity-20 transition-colors">引言</a></li>
+                <li><a href="#religious-themes" class="block py-2 px-3 rounded hover:bg-white hover:bg-opacity-20 transition-colors">1. 宗教题材的艺术理念</a>
+                    <ul class="ml-4 mt-2 space-y-2 text-xs opacity-90">
+                        <li><a href="#humanized-religious" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">1.1 人性化的宗教表现</a></li>
+                        <li><a href="#realism-religious" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">1.2 现实主义与写实手法</a></li>
+                        <li><a href="#humanism-religious" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">1.3 宗教与人文主义的结合</a></li>
+                        <li><a href="#patrons-religious" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">1.4 赞助人的影响</a></li>
+                    </ul>
+                </li>
+                <li><a href="#mythological-themes" class="block py-2 px-3 rounded hover:bg-white hover:bg-opacity-20 transition-colors">2. 神话题材的艺术理念</a>
+                    <ul class="ml-4 mt-2 space-y-2 text-xs opacity-90">
+                        <li><a href="#classical-revival" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">2.1 对古典文化的复兴</a></li>
+                        <li><a href="#symbolism-myth" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">2.2 象征与寓意的运用</a></li>
+                        <li><a href="#neoplatonism" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">2.3 新柏拉图主义的影响</a></li>
+                        <li><a href="#political-symbols" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">2.4 政治象征的体现</a></li>
+                    </ul>
+                </li>
+                <li><a href="#portrait-themes" class="block py-2 px-3 rounded hover:bg-white hover:bg-opacity-20 transition-colors">3. 肖像题材的艺术理念</a>
+                    <ul class="ml-4 mt-2 space-y-2 text-xs opacity-90">
+                        <li><a href="#humanism-portrait" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">3.1 人文主义思想的体现</a></li>
+                        <li><a href="#individual-value" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">3.2 个体价值与内心世界</a></li>
+                        <li><a href="#realism-technique" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">3.3 写实技法的进步</a></li>
+                        <li><a href="#new-class" class="block py-1 px-2 rounded hover:bg-white hover:bg-opacity-10">3.4 新兴阶层的需求</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Menu Toggle -->
+    <button id="toc-toggle" class="fixed top-4 left-4 z-[1001] bg-primary text-white p-3 rounded-lg shadow-lg" onclick="toggleTOC()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        <!-- Hero Section -->
+        <section class="px-8 py-16">
+            <div class="hero-grid max-w-7xl mx-auto">
+                <div class="hero-text">
+                    <h1 class="text-5xl font-bold serif mb-6 text-primary leading-tight">
+                        <em>文艺复兴时期艺术家</em><br/>
+                        在宗教、神话和肖像题材中的艺术理念
+                    </h1>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                        探索14至17世纪欧洲文化复兴运动中，艺术家如何在宗教、神话和肖像三大题材中体现深刻的人文主义思想转变，以及对古典文化的重新诠释。
+                    </p>
+                    <div class="flex items-center space-x-6 text-sm text-gray-600">
+                        <span class="flex items-center">
+                            <i class="fas fa-palette mr-2 text-accent"></i>
+                            艺术史研究
+                        </span>
+                        <span class="flex items-center">
+                            <i class="fas fa-scroll mr-2 text-accent"></i>
+                            文艺复兴时期
+                        </span>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/i.epochtimes.com/d4c383a2bae6574cce12204e460fa3079e7155ab.jpg" alt="文艺复兴时期艺术工作室场景，展示画家使用透视法创作宗教题材画作" class="w-full h-96 object-cover" size="large" aspect="wide" query="文艺复兴时期 艺术工作室 绘画技法 透视法 宗教题材 古典艺术" referrerpolicy="no-referrer" data-modified="1" data-score="11599.00"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction -->
+        <section id="introduction" class="px-8 py-12 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold serif mb-8 text-primary">引言</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    文艺复兴时期（约14世纪至17世纪）是欧洲历史上一个重要的文化运动，标志着中世纪向现代社会的过渡。这一时期的艺术家在思想上发生了一系列的重大转变，这些转变深刻地影响了他们的创作过程和作品的内容。其中，<strong>人文主义</strong>的兴起是一个核心的驱动力。
+                </p>
+                <p class="text-lg leading-relaxed mb-6">
+                    人文主义者重视古希腊和古罗马的文化遗产，强调人的尊严和价值，关注现世生活的美好。这种思想在艺术家的作品中得到了充分体现，无论是在<strong>宗教</strong>、<strong>神话</strong>还是<strong>肖像</strong>题材中，都留下了鲜明的时代印记。
+                </p>
+                
+                <div class="pull-quote serif">
+                    &#34;文艺复兴时期的艺术家在题材选择上展现出深刻的艺术理念转变，从宗教题材的人性化表现，到神话题材的古典复兴，再到肖像题材的个体价值彰显，无不体现着人文主义思想的影响。&#34;
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Religious Themes -->
+        <section id="religious-themes" class="px-8 py-12">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold serif mb-12 text-primary">1. 宗教题材的艺术理念</h2>
+                
+                <p class="text-lg leading-relaxed mb-8">
+                    宗教题材在文艺复兴时期的艺术创作中占据了非常重要的位置。基督教的教义和圣经故事是艺术家们创作的主要灵感来源之一。然而，与中世纪不同的是，这一时期的艺术家在处理宗教主题时，不再仅仅局限于宗教教义的严格框架，而是融入了更多的人文主义思想。
+                </p>
+
+                <div id="humanized-religious" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">1.1 人性化的宗教表现</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        文艺复兴时期的艺术家在处理宗教题材时，一个显著的特征是将宗教人物和场景进行<strong>人性化的表现</strong>。他们不再像中世纪艺术家那样，将神圣人物描绘成刻板、遥不可及的符号，而是赋予他们真实的人类情感和特征。
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <p class="leading-relaxed mb-4">
+                                这种转变深受人文主义思想的影响，人文主义强调人的价值和尊严，关注人的情感和体验。因此，艺术家们开始从现实生活中寻找灵感，观察普通人的喜怒哀乐，并将这些观察融入到宗教人物的塑造中。
+                            </p>
+                            <p class="leading-relaxed">
+                                <a href="http://www.360doc.com/content/22/0103/13/13326414_1011651528.shtml" class="citation">拉斐尔的圣母像</a>是人性化宗教表现的典范，他将圣母玛利亚描绘成充满母性光辉和慈爱的普通母亲形象，而非高高在上的神灵。
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <img src="https://kimi-web-img.moonshot.cn/img/p3-sdbk2-media.byteimg.com/00bf7e7545fa155f20fc599771a690c62a57198c.image" alt="拉斐尔绘制的《西斯廷圣母》油画局部，圣母玛利亚怀抱圣婴，展现母性光辉" class="w-full h-48 object-cover rounded mb-4" size="medium" aspect="wide" style="photo" query="拉斐尔 西斯廷圣母 文艺复兴 宗教画 人文主义 母性光辉" referrerpolicy="no-referrer" data-modified="1" data-score="11594.00"/>
+                            <p class="text-sm text-gray-600 italic">拉斐尔笔下的圣母形象体现了文艺复兴时期宗教题材的人性化表现</p>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        例如，在描绘耶稣受难时，艺术家们不再仅仅强调其神性的一面，而是更多地展现他作为人所承受的痛苦和悲伤，以及门徒们的恐惧、绝望和希望。<a href="https://zhuanlan.zhihu.com/p/587165898" class="citation">达·芬奇</a>在《最后的晚餐》中，通过对门徒们不同神态和动作的刻画，展现了他们在听到耶稣宣布有人出卖他时的震惊、愤怒、疑惑和恐惧等复杂情绪，深刻揭示了人性。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="https://zhuanlan.zhihu.com/p/595977378" class="citation">乔托</a>被认为是第一个从人性的角度来描绘宗教故事的人，他的作品《哀悼基督》中，人物开始展现出人类的情感，人们因为基督的去世而哀悼，这种情感的流露使得宗教故事更具感染力。
+                    </p>
+                </div>
+
+                <div id="realism-religious" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">1.2 现实主义与写实手法的运用</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        与人性化表现相辅相成的是<strong>现实主义与写实手法的广泛运用</strong>。文艺复兴时期的艺术家们对自然世界和人体结构产生了浓厚的兴趣，并致力于通过科学的方法来研究和再现它们。
+                    </p>
+                    
+                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-8 rounded-xl mb-8">
+                        <h4 class="text-xl font-semibold mb-4 text-primary">科学方法的艺术应用</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <i class="fas fa-microscope text-3xl text-accent mb-3"></i>
+                                <h5 class="font-semibold mb-2">解剖学研究</h5>
+                                <p class="text-sm">深入研究人体肌肉、骨骼和动态</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-cube text-3xl text-accent mb-3"></i>
+                                <h5 class="font-semibold mb-2">透视法探索</h5>
+                                <p class="text-sm">在二维平面创造三维空间错觉</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-lightbulb text-3xl text-accent mb-3"></i>
+                                <h5 class="font-semibold mb-2">光影效果</h5>
+                                <p class="text-sm">符合自然规律的光影表现</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        <a href="https://zhuanlan.zhihu.com/p/537888555" class="citation">达·芬奇</a>是现实主义与写实手法的杰出代表，他认为绘画是一门科学，强调艺术家应像镜子一样真实地反映世界。在其代表作<a href="http://v.ccdi.gov.cn/2020/10/16/VIDEd2r4bVs9D7A6Dmk1Gcx1201016.shtml" class="citation">《最后的晚餐》</a>中，达·芬奇不仅精确地运用了透视法，还细致入微地刻画了每个人物的神态、手势和表情。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="https://www.whataportrait.com/blog/renaissance-painting/?srsltid=AfmBOopfyMcr_Xw457WPvOmAh5YvqtuksEwJAkrQK-vRbnuWjzWH4zQO" class="citation">米开朗基罗</a>同样注重对人体的真实描绘，他的雕塑作品《大卫》和西斯廷教堂天顶画中的众多人物，都展现出强健的体魄和精准的解剖结构。
+                    </p>
+                </div>
+
+                <div id="humanism-religious" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">1.3 宗教与人文主义的结合</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        文艺复兴时期宗教题材艺术的另一个核心特征是<strong>宗教与人文主义的紧密结合</strong>。人文主义思想的核心在于肯定人的价值和现世生活的意义，这与中世纪强调神权和来世的观念有所不同。
+                    </p>
+
+                    <div class="pull-quote serif">
+                        &#34;艺术家们在创作宗教题材作品时，巧妙地将人文主义的精神内核融入其中，使得作品在传达宗教信息的同时，也闪耀着人性的光辉。&#34;
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        例如，在描绘圣母玛利亚时，艺术家们不再仅仅将她表现为高高在上的神之母，而是更多地强调她作为母亲的温柔、慈爱和人性的一面。<a href="http://m.ccdi.gov.cn/content/40/53/67982.html" class="citation">拉斐尔笔下的圣母形象</a>就是典型的例子，她们美丽、端庄，充满了人间母性的光辉，体现了对人类情感的尊重和赞美。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="https://zhuanlan.zhihu.com/p/511300250" class="citation">米开朗基罗的《大卫》雕像</a>，虽然取材于圣经故事，但艺术家赋予了这个人物一种前所未有的英雄气概和人类精神的崇高感，体现了对人类自身力量的赞美和信心。
+                    </p>
+                </div>
+
+                <div id="patrons-religious" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">1.4 赞助人对宗教题材创作的影响</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        文艺复兴时期的艺术创作在很大程度上依赖于<strong>赞助人的支持</strong>，无论是教会、贵族还是新兴的富裕市民阶层，都对艺术作品的题材、形式和内容产生着直接或间接的影响。
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-primary">主要赞助人类型</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-church text-accent mt-1 mr-3"></i>
+                                    <span><strong>教会机构</strong>：委托创作教堂装饰和宗教仪式用品</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-crown text-accent mt-1 mr-3"></i>
+                                    <span><strong>贵族家族</strong>：如<a href="https://www.sohu.com/a/379830833_120447059" class="citation">美第奇家族</a>，彰显虔诚和财富</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-users text-accent mt-1 mr-3"></i>
+                                    <span><strong>富裕市民</strong>：新兴资产阶级的个性化需求</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <img src="https://kimi-web-img.moonshot.cn/img/picx.zhimg.com/3768b19a82a8ba4a885d63fbcb0dd133a8a014d4.jpg" alt="美第奇家族赞助的佛罗伦萨教堂内部装饰与壁画" class="w-full h-48 object-cover rounded mb-4" size="medium" aspect="wide" style="photo" query="美第奇家族 佛罗伦萨 教堂 艺术赞助 文艺复兴 壁画" referrerpolicy="no-referrer" data-modified="1" data-score="11598.00"/>
+                            <p class="text-sm text-gray-600 italic">美第奇家族等赞助人对宗教艺术的重要影响</p>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        <a href="https://www.canvasprintsaustralia.net.au/the-influence-of-politics-in-renaissance-art-prints/" class="citation">教皇尤利乌斯二世</a>委托米开朗基罗为西斯廷教堂创作天顶画，不仅是为了美化教堂，也是为了彰显教皇的权威和教会的荣耀。
+                    </p>
+                    <p class="leading-relaxed">
+                        另一方面，富有的世俗赞助人，如<a href="https://m.douban.com/group/topic/19531434/" class="citation">美第奇家族</a>，也经常委托创作宗教题材的作品，用于私人礼拜或彰显其虔诚和财富。<a href="https://finance.sina.cn/tech/2023-05-28/detail-imyvfynw6981715.d.html?from=wap" class="citation">米开朗基罗</a>在美第奇家族位于圣洛伦佐的葬礼教堂创作的一系列作品，就旨在颂扬美第奇家族。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Mythological Themes -->
+        <section id="mythological-themes" class="px-8 py-12 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold serif mb-12 text-primary">2. 神话题材的艺术理念</h2>
+                
+                <p class="text-lg leading-relaxed mb-8">
+                    神话题材在文艺复兴时期得到了广泛的复兴，艺术家们对古希腊和古罗马的神话故事产生了浓厚的兴趣。这种兴趣不仅仅是一种复古的表现，更是一种对人文主义思想的追求。
+                </p>
+
+                <div id="classical-revival" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">2.1 对古典文化的复兴与借鉴</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        文艺复兴的核心精神之一就是对<strong>古典文化的复兴</strong>（Renaissance的本意即为&#34;再生&#34;）。艺术家们渴望摆脱中世纪的束缚，重新发掘和借鉴古希腊罗马的文化遗产。
+                    </p>
+
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-xl mb-8">
+                        <h4 class="text-xl font-semibold mb-6 text-primary text-center">古典文化复兴的表现形式</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-semibold mb-3 text-accent">文化元素</h5>
+                                <ul class="space-y-2 text-sm">
+                                    <li>• 神话人物和故事</li>
+                                    <li>• 古典美学理想</li>
+                                    <li>• 和谐的比例原则</li>
+                                    <li>• 人体美的赞颂</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold mb-3 text-accent">艺术技法</h5>
+                                <ul class="space-y-2 text-sm">
+                                    <li>• 优美的线条运用</li>
+                                    <li>• 精湛的技艺再现</li>
+                                    <li>• 古典雕塑影响</li>
+                                    <li>• 古代文献研究</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        例如，<a href="https://www.thepaper.cn/newsDetail_forward_6658480" class="citation">波提切利的《春》和《维纳斯的诞生》</a>就是这一趋势的杰出代表。这些作品不仅以精湛的技艺再现了神话场景，更重要的是，它们体现了对古典美学理想的追求，如和谐的比例、优美的线条和对人体美的赞颂。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="https://zhuanlan.zhihu.com/p/511300250" class="citation">扬·戈萨尔特（Jan Gossaert）</a>在游历意大利后，深受文艺复兴和古典艺术的熏陶，创作了许多以古典神话为主题的作品，将意大利绘画中的裸体人物和虚构场景带到了尼德兰地区。
+                    </p>
+                </div>
+
+                <div id="symbolism-myth" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">2.2 象征与寓意的运用</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        在文艺复兴时期，神话题材常常被艺术家用作表达复杂思想和情感的载体，通过<strong>象征和寓意的手法</strong>，赋予作品更深层次的内涵。
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-accent">
+                            <h5 class="font-semibold mb-3 text-primary">维纳斯</h5>
+                            <p class="text-sm text-gray-700">爱与美的象征，探讨人类情感的复杂性和美的理想形态</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-accent">
+                            <h5 class="font-semibold mb-3 text-primary">赫拉克勒斯</h5>
+                            <p class="text-sm text-gray-700">勇气、力量和克服困难的毅力的象征</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-accent">
+                            <h5 class="font-semibold mb-3 text-primary">雅典娜</h5>
+                            <p class="text-sm text-gray-700">智慧、理性和战略思维的象征</p>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        <a href="https://www.wikiart.org/news/the-mythological-themes-in-sandro-botticellis-renaissance-art/" class="citation">波提切利的《维纳斯的诞生》</a>通过描绘维纳斯从海中贝壳升起的情景，不仅展现了对古典美的追求，也可能寓示着纯洁、新生以及对精神之爱的向往。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="https://www.thepaper.cn/newsDetail_forward_29118807" class="citation">提香</a>为菲利普二世创作的一系列以奥维德《变形记》为题材的&#34;诗意&#34;作品，表面上描绘的是神话题材，但也被解读为对哈布斯堡统治和殖民化暴力的寓言。
+                    </p>
+                </div>
+
+                <div id="neoplatonism" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">2.3 新柏拉图主义哲学思想的影响</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        <strong>新柏拉图主义</strong>是文艺复兴时期对艺术家产生重要影响的一种哲学思潮。新柏拉图主义强调精神世界的重要性，认为物质世界是精神世界的反映，美是通往神圣的途径。
+                    </p>
+
+                    <div class="bg-yellow-50 p-8 rounded-xl mb-8">
+                        <img src="https://kimi-web-img.moonshot.cn/img/img.allhistory.com/4e20c28b5be8309dbc20ade6935dc5aa85664289.png" alt="拉斐尔名画《雅典学院》局部：柏拉图与亚里士多德在古典建筑中辩论哲学" class="w-full h-64 object-cover rounded-lg mb-6" size="medium" aspect="wide" query="拉斐尔 雅典学院 壁画 文艺复兴 新柏拉图主义 古典哲学" referrerpolicy="no-referrer" data-modified="1" data-score="11598.00"/>
+                        <h4 class="text-xl font-semibold mb-4 text-primary">新柏拉图主义的核心观念</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h5 class="font-semibold mb-2">精神世界优先</h5>
+                                <p class="text-sm">物质世界是精神世界的反映</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold mb-2">美的神圣性</h5>
+                                <p class="text-sm">美是通往神圣的途径</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold mb-2">抽象理念</h5>
+                                <p class="text-sm">神话人物是理念的化身</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold mb-2">宇宙和谐</h5>
+                                <p class="text-sm">探索爱与美的本质</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        例如，在<a href="https://greekreporter.com/2025/06/23/greek-mythology-renaissance-masterpieces/" class="citation">波提切利</a>的作品中，维纳斯的形象常常被赋予新柏拉图主义的解读，她不仅是爱与美的女神，更象征着神圣之爱或宇宙和谐的精神原则。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="http://m.ccdi.gov.cn/content/40/53/67982.html" class="citation">拉斐尔的《雅典学院》</a>则通过描绘古希腊哲学家们聚集一堂的场景，展现了人类对智慧和真理的不懈追求，体现了新柏拉图主义对理性和知识的推崇。
+                    </p>
+                </div>
+
+                <div id="political-symbols" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">2.4 赞助人与政治象征在神话题材中的体现</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        与宗教题材类似，神话题材的创作也深受<strong>赞助人需求和当时政治环境的影响</strong>。富有的贵族和统治者常常委托艺术家创作神话题材的作品，用以装饰他们的宫殿、别墅或作为礼物赠送。
+                    </p>
+
+                    <div class="pull-quote serif">
+                        &#34;统治者可能会将自己比作神话中的英雄或神祇，以此来彰显其权力、智慧和美德，提升其统治的合法性和威望。&#34;
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        <a href="https://m.thepaper.cn/kuaibao_detail.jsp?contid=22876658&amp;from=kuaibao" class="citation">美第奇家族</a>就经常在艺术作品中与神话人物联系起来，以此巩固其在佛罗伦萨的政治地位和文化影响力。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="https://zhuanlan.zhihu.com/p/212692210" class="citation">提香</a>为西班牙国王菲利普二世创作的以奥维德作品为主题的神话题材油画，如《达娜厄》和《戴安娜与阿克泰翁》，虽然题材源于古典神话，但也可能被赋予了特定的政治寓意，用以颂扬哈布斯堡王朝的统治。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Portrait Themes -->
+        <section id="portrait-themes" class="px-8 py-12">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold serif mb-12 text-primary">3. 肖像题材的艺术理念</h2>
+                
+                <p class="text-lg leading-relaxed mb-8">
+                    肖像画在文艺复兴时期得到了极大的发展，这与欧洲社会结构的变化和人文主义思想的传播密不可分。
+                </p>
+
+                <div id="humanism-portrait" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">3.1 人文主义思想的体现</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        文艺复兴时期肖像画的兴起与<strong>人文主义思想的传播</strong>密切相关。人文主义强调个体的价值和尊严，关注人的个性、情感和现世成就。这种思潮促使人们开始更加重视对个体形象的记录和表现。
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <img src="https://kimi-web-img.moonshot.cn/img/k.sinaimg.cn/2974c2a3a8a8d51b27eb73def7bea0eb47000f75.jpg" alt="达芬奇名画《蒙娜丽莎》肖像，展现文艺复兴时期人文主义精神" class="w-full h-64 object-cover rounded-lg mb-4" size="medium" aspect="wide" style="photo" query="达芬奇 蒙娜丽莎 肖像画 文艺复兴 人文主义" referrerpolicy="no-referrer" data-modified="1" data-score="11597.00"/>
+                            <p class="text-sm text-gray-600 italic">达·芬奇的《蒙娜丽莎》体现了人文主义精神</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-primary">人文主义肖像的特点</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-user text-accent mt-1 mr-3"></i>
+                                    <span>捕捉人物独特气质和内心世界</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-accent mt-1 mr-3"></i>
+                                    <span>注重面部表情和姿态的细微变化</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-gem text-accent mt-1 mr-3"></i>
+                                    <span>揭示人物性格、情感和社会地位</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-star text-accent mt-1 mr-3"></i>
+                                    <span>强调个体存在的证明和认同</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        例如，<a href="http://collection.sina.com.cn/zt/wyfxsq/?from=wap" class="citation">达·芬奇的《蒙娜丽莎》</a>以其神秘的微笑和深邃的眼神，展现了人物复杂的内心活动，成为体现人文主义精神的杰作。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="https://www.sohu.com/a/736798362_99985427" class="citation">扬·范·艾克的《阿尔诺芬尼夫妇像》</a>以其超级细致的构图和对人物神态、环境的精准描绘，展现了画家对现实生活和个体存在的关注。
+                    </p>
+                </div>
+
+                <div id="individual-value" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">3.2 对个体价值与内心世界的重视</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        随着人文主义思想的深入人心，文艺复兴时期的艺术家在肖像创作中，越来越注重<strong>对个体价值和人物内心世界的深入挖掘</strong>。他们不再满足于简单地再现人物的外貌特征，而是力求通过细腻的描绘，揭示人物独特的性格、情感、思想和精神风貌。
+                    </p>
+
+                    <div class="bg-purple-50 p-8 rounded-xl mb-8">
+                        <h4 class="text-xl font-semibold mb-6 text-primary text-center">内心世界刻画技法</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="text-center">
+                                <i class="fas fa-eye text-2xl text-accent mb-3"></i>
+                                <h5 class="font-semibold text-sm">眼神刻画</h5>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-smile text-2xl text-accent mb-3"></i>
+                                <h5 class="font-semibold text-sm">表情传递</h5>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-hand-paper text-2xl text-accent mb-3"></i>
+                                <h5 class="font-semibold text-sm">手势语言</h5>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-tshirt text-2xl text-accent mb-3"></i>
+                                <h5 class="font-semibold text-sm">服饰象征</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        <a href="https://www.sohu.com/a/736798362_99985427" class="citation">扬·范·艾克的《阿尔诺芬尼夫妇像》</a>不仅精确地描绘了人物的外貌和所处的环境，更通过夫妻间的互动和房间内的各种象征物，暗示了他们的婚姻关系、社会地位和宗教信仰，展现了人物丰富的内心世界和所处的社会文化背景。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="http://www.360doc.com/content/24/0720/12/731047_1129230406.shtml" class="citation">乔瓦尼·巴蒂斯塔·莫罗尼（Giovanni Battista Moroni）</a>的肖像画作品，就以其对人物个性和情感的细腻刻画而著称。
+                    </p>
+                </div>
+
+                <div id="realism-technique" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">3.3 写实技法的进步与运用</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        文艺复兴时期肖像画的繁荣，也得益于<strong>写实技法的巨大进步和广泛运用</strong>。艺术家们对解剖学、透视法和光影效果的深入研究，为他们精确再现人物形象和创造三维空间感提供了技术支持。
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-accent">
+                            <h5 class="font-semibold mb-3 text-primary">解剖学知识</h5>
+                            <p class="text-sm text-gray-700">精确描绘人体结构和比例，特别是头颈肩关系和面部肌肉变化</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-accent">
+                            <h5 class="font-semibold mb-3 text-primary">透视法运用</h5>
+                            <p class="text-sm text-gray-700">营造具有深度感的空间，真实呈现人物环境</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-accent">
+                            <h5 class="font-semibold mb-3 text-primary">油画技法</h5>
+                            <p class="text-sm text-gray-700">细致描绘和丰富色彩，捕捉肌肤质感和光影变化</p>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        <a href="https://russell-collection.com/renaissance-art-examples/" class="citation">扬·范·艾克</a>被认为是油画技法的革新者之一，他的作品以其惊人的细节和逼真度而著称。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="https://zhuanlan.zhihu.com/p/595977378" class="citation">达·芬奇</a>发明的&#34;渐隐法&#34;（sfumato）使得人物轮廓和明暗过渡更加柔和自然，增强了画面的朦胧感和神秘感。
+                    </p>
+                </div>
+
+                <div id="new-class" class="mb-16">
+                    <h3 class="text-2xl font-semibold serif mb-6 text-accent">3.4 满足新兴阶层需求与艺术家的自我表达</h3>
+                    <p class="text-lg leading-relaxed mb-6">
+                        文艺复兴时期社会结构的变化，特别是<strong>新兴资产阶级和富裕市民阶层的崛起</strong>，为肖像画的发展提供了重要的社会和经济基础。这些新兴的富有阶层渴望通过艺术来记录自己的形象，彰显其社会地位、财富和文化品味。
+                    </p>
+
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-xl mb-8">
+                        <h4 class="text-xl font-semibold mb-6 text-primary text-center">社会需求与艺术表达</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h5 class="font-semibold mb-4 text-accent">社会需求</h5>
+                                <ul class="space-y-2 text-sm">
+                                    <li>• 装饰住宅和纪念重要事件</li>
+                                    <li>• 彰显社会地位和财富</li>
+                                    <li>• 体现文化品味和修养</li>
+                                    <li>• 作为家族传承的载体</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold mb-4 text-accent">艺术表达</h5>
+                                <ul class="space-y-2 text-sm">
+                                    <li>• 艺术家自我意识的觉醒</li>
+                                    <li>• 艺术风格的个性化发展</li>
+                                    <li>• 对人物的独特理解</li>
+                                    <li>• 思想情感交流的媒介</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="leading-relaxed mb-4">
+                        另一方面，肖像画也为艺术家提供了<strong>自我表达和探索艺术理念的途径</strong>。一些艺术家通过创作自画像来审视自我、记录自己的艺术成长，或表达自己的艺术主张。例如，<a href="https://wepub.org/index.php/TSSEHR/article/download/2509/2729/4969" class="citation">阿尔布雷希特·丢勒</a>创作了多幅著名的自画像，展现了艺术家自我意识的觉醒。
+                    </p>
+                    <p class="leading-relaxed">
+                        <a href="https://zhuanlan.zhihu.com/p/212692210" class="citation">提香</a>在16世纪30年代后，主要为贵族绘制肖像画，他的主顾包括匈牙利王妃玛丽、神圣罗马帝国皇帝查理五世等，他为查理五世创作的《查理五世骑马肖像》使其获得了崇高的荣誉和地位。
+                    </p>
+                </div>
+
+                <!-- Artistic Themes Flow Diagram -->
+                <div class="mermaid-container">
+                    <div class="mermaid-zoom-controls">
+                        <button class="zoom-btn" onclick="zoomDiagram(1.2)" title="放大">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <button class="zoom-btn" onclick="zoomDiagram(0.8)" title="缩小">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button class="zoom-btn" onclick="fitDiagram()" title="适应大小">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                        <button class="zoom-btn" onclick="resetDiagram()" title="重置">
+                            <i class="fas fa-undo"></i>
+                        </button>
+                    </div>
+                    <div class="zoom-info" id="zoom-info">
+                        缩放: <span id="zoom-level">100%</span> | 拖拽移动 | 滚轮缩放
+                    </div>
+                    <div class="mermaid" id="artistic-themes-diagram">
+                        graph TD
+                            A[文艺复兴时期艺术理念] --&gt; B[宗教题材]
+                            A --&gt; C[神话题材]
+                            A --&gt; D[肖像题材]
+                            
+                            B --&gt; B1[人性化表现]
+                            B --&gt; B2[现实主义技法]
+                            B --&gt; B3[人文主义结合]
+                            B --&gt; B4[赞助人影响]
+                            
+                            C --&gt; C1[古典文化复兴]
+                            C --&gt; C2[象征寓意运用]
+                            C --&gt; C3[新柏拉图主义]
+                            C --&gt; C4[政治象征体现]
+                            
+                            D --&gt; D1[人文主义体现]
+                            D --&gt; D2[个体价值重视]
+                            D --&gt; D3[写实技法进步]
+                            D --&gt; D4[新兴阶层需求]
+                            
+                            style A fill:#8B4513,stroke:#2C1810,stroke-width:3px,color:#fff
+                            style B fill:#D2B48C,stroke:#8B4513,stroke-width:2px,color:#2C1810
+                            style C fill:#CD853F,stroke:#8B4513,stroke-width:2px,color:#fff
+                            style D fill:#F5F5DC,stroke:#8B4513,stroke-width:2px,color:#2C1810
+                            
+                            style B1 fill:#fef2f2,stroke:#dc2626,stroke-width:2px,color:#1f2937
+                            style B2 fill:#fef2f2,stroke:#dc2626,stroke-width:2px,color:#1f2937
+                            style B3 fill:#fef2f2,stroke:#dc2626,stroke-width:2px,color:#1f2937
+                            style B4 fill:#fef2f2,stroke:#dc2626,stroke-width:2px,color:#1f2937
+                            
+                            style C1 fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#1f2937
+                            style C2 fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#1f2937
+                            style C3 fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#1f2937
+                            style C4 fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#1f2937
+                            
+                            style D1 fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1f2937
+                            style D2 fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1f2937
+                            style D3 fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1f2937
+                            style D4 fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1f2937
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="px-8 py-16 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold serif mb-6 text-primary">结语</h2>
+                </div>
+                
+                <div class="bg-gradient-to-r from-primary to-accent text-white p-8 rounded-xl">
+                    <p class="text-lg leading-relaxed mb-6" style="color: #000000;">
+                        文艺复兴时期的艺术家在题材选择上展现出深刻的艺术理念转变。在<strong>宗教题材</strong>中，他们追求<strong>人性化的表现</strong>，运用<strong>现实主义与写实手法</strong>，并将<strong>宗教与人文主义思想紧密结合</strong>，同时受到<strong>赞助人的显著影响</strong>。
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6" style="color: #000000;">
+                        在<strong>神话题材</strong>方面，艺术家致力于<strong>复兴与借鉴古典文化</strong>，广泛运用<strong>象征与寓意</strong>，深受<strong>新柏拉图主义哲学思想</strong>的熏陶，并常在作品中体现<strong>赞助人的政治象征</strong>。
+                    </p>
+                    <p class="text-lg leading-relaxed" style="color: #000000;">
+                        对于<strong>肖像题材</strong>，则充分体现了<strong>人文主义思想</strong>，高度重视<strong>个体价值与内心世界</strong>，得益于<strong>写实技法的进步与运用</strong>，并积极<strong>满足新兴阶层的需求</strong>，同时也成为<strong>艺术家自我表达</strong>的途径。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="px-8 py-12 bg-gray-900 text-white">
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-gray-400 mb-4">
+                    本文探讨了文艺复兴时期艺术家在三大题材中的艺术理念转变，体现了人文主义思想对艺术创作的深远影响。
+                </p>
+                <div class="flex justify-center space-x-6 text-sm text-gray-500">
+                    <span>艺术史研究</span>
+                    <span>•</span>
+                    <span>文艺复兴时期</span>
+                    <span>•</span>
+                    <span>人文主义思想</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#FEFEFE',
+                primaryTextColor: '#2C1810',
+                primaryBorderColor: '#8B4513',
+                lineColor: '#CD853F',
+                secondaryColor: '#F5F5DC',
+                tertiaryColor: '#D2B48C',
+                background: '#FEFEFE',
+                mainBkg: '#FEFEFE',
+                secondBkg: '#F5F5DC',
+                tertiaryBkg: '#D2B48C',
+                nodeBkg: '#FEFEFE',
+                nodeBorder: '#8B4513',
+                clusterBkg: '#F5F5DC',
+                clusterBorder: '#CD853F',
+                defaultLinkColor: '#CD853F',
+                titleColor: '#2C1810',
+                edgeLabelBackground: '#FEFEFE',
+                nodeTextColor: '#2C1810',
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '14px'
+            },
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 20,
+                nodeSpacing: 50,
+                rankSpacing: 80,
+                diagramPadding: 20
+            },
+            fontFamily: 'Inter, sans-serif'
+        });
+
+        // Mermaid diagram zoom and pan functionality
+        let currentScale = 1;
+        let isDragging = false;
+        let startX, startY, translateX = 0, translateY = 0;
+        let containerRect, diagramRect;
+
+        function zoomDiagram(factor) {
+            currentScale *= factor;
+            currentScale = Math.max(0.3, Math.min(5, currentScale)); // Limit zoom between 0.3x and 5x
+            updateDiagramTransform();
+            updateZoomInfo();
+        }
+
+        function updateDiagramTransform() {
+            const diagram = document.getElementById('artistic-themes-diagram');
+            if (diagram) {
+                diagram.style.transform = `translate(${translateX}px, ${translateY}px) scale(${currentScale})`;
+            }
+        }
+
+        function updateZoomInfo() {
+            const zoomLevel = document.getElementById('zoom-level');
+            if (zoomLevel) {
+                zoomLevel.textContent = Math.round(currentScale * 100) + '%';
+            }
+        }
+
+        function resetDiagram() {
+            currentScale = 1;
+            translateX = 0;
+            translateY = 0;
+            updateDiagramTransform();
+            updateZoomInfo();
+        }
+
+        function fitDiagram() {
+            const container = document.querySelector('.mermaid-container');
+            const diagram = document.getElementById('artistic-themes-diagram');
+            const svg = diagram.querySelector('svg');
+            
+            if (container && svg) {
+                const containerRect = container.getBoundingClientRect();
+                const svgRect = svg.getBoundingClientRect();
+                
+                const scaleX = (containerRect.width - 80) / svgRect.width;
+                const scaleY = (containerRect.height - 80) / svgRect.height;
+                
+                currentScale = Math.min(scaleX, scaleY, 1); // Don't scale up beyond 100%
+                translateX = 0;
+                translateY = 0;
+                updateDiagramTransform();
+                updateZoomInfo();
+            }
+        }
+
+        // Wait for mermaid to render, then initialize positioning and interactions
+        function initializeDiagramInteraction() {
+            const diagram = document.getElementById('artistic-themes-diagram');
+            const container = document.querySelector('.mermaid-container');
+            
+            if (!diagram || !container) return;
+
+            // Center the diagram initially
+            setTimeout(() => {
+                const svg = diagram.querySelector('svg');
+                if (svg) {
+                    // Center the diagram in the container
+                    translateX = 0;
+                    translateY = 0;
+                    updateDiagramTransform();
+                    updateZoomInfo();
+                }
+            }, 100);
+
+            // Mouse wheel zoom
+            container.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
+                const oldScale = currentScale;
+                
+                zoomDiagram(zoomFactor);
+                
+                // Adjust translation to zoom towards center
+                const scaleChange = currentScale / oldScale;
+                translateX = centerX - (centerX - translateX) * scaleChange;
+                translateY = centerY - (centerY - translateY) * scaleChange;
+                updateDiagramTransform();
+            });
+
+            // Drag functionality
+            diagram.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                diagram.style.cursor = 'grabbing';
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    translateX = e.clientX - startX;
+                    translateY = e.clientY - startY;
+                    updateDiagramTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+                diagram.style.cursor = 'grab';
+            });
+
+            // Touch support for mobile
+            let lastTouchDistance = 0;
+            
+            diagram.addEventListener('touchstart', function(e) {
+                if (e.touches.length === 1) {
+                    isDragging = true;
+                    startX = e.touches[0].clientX - translateX;
+                    startY = e.touches[0].clientY - translateY;
+                } else if (e.touches.length === 2) {
+                    const touch1 = e.touches[0];
+                    const touch2 = e.touches[1];
+                    lastTouchDistance = Math.sqrt(
+                        Math.pow(touch2.clientX - touch1.clientX, 2) +
+                        Math.pow(touch2.clientY - touch1.clientY, 2)
+                    );
+                }
+                e.preventDefault();
+            });
+
+            diagram.addEventListener('touchmove', function(e) {
+                if (e.touches.length === 1 && isDragging) {
+                    translateX = e.touches[0].clientX - startX;
+                    translateY = e.touches[0].clientY - startY;
+                    updateDiagramTransform();
+                } else if (e.touches.length === 2) {
+                    const touch1 = e.touches[0];
+                    const touch2 = e.touches[1];
+                    const currentDistance = Math.sqrt(
+                        Math.pow(touch2.clientX - touch1.clientX, 2) +
+                        Math.pow(touch2.clientY - touch1.clientY, 2)
+                    );
+                    
+                    if (lastTouchDistance > 0) {
+                        const zoomFactor = currentDistance / lastTouchDistance;
+                        zoomDiagram(zoomFactor);
+                    }
+                    lastTouchDistance = currentDistance;
+                }
+                e.preventDefault();
+            });
+
+            diagram.addEventListener('touchend', function() {
+                isDragging = false;
+                lastTouchDistance = 0;
+            });
+
+            // Initialize zoom info
+            updateZoomInfo();
+        }
+
+        // Initialize diagram interaction after mermaid renders
+        setTimeout(initializeDiagramInteraction, 1000);
+
+        // Mobile TOC toggle
+        function toggleTOC() {
+            const toc = document.querySelector('.toc-fixed');
+            toc.classList.toggle('open');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close mobile TOC when clicking outside
+        document.addEventListener('click', function(e) {
+            const toc = document.querySelector('.toc-fixed');
+            const toggleBtn = document.querySelector('button[onclick="toggleTOC()"]');
+            
+            if (window.innerWidth <= 1024 && 
+                !toc.contains(e.target) && 
+                !toggleBtn.contains(e.target) && 
+                toc.classList.contains('open')) {
+                toc.classList.remove('open');
+            }
+        });
+    </script>
+
+    <script>
+        function toggleTOC() {
+            const toc = document.getElementById('toc');
+            const main = document.getElementById('main-content');
+            const toggleBtn = document.getElementById('toc-toggle');
+            const icon = toggleBtn.querySelector('i');
+            
+            const isOpen = toc.classList.toggle('open');
+
+            if (isOpen) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+
+            if (window.innerWidth > 1024) {
+                if (isOpen) {
+                    main.style.marginLeft = '300px';
+                } else {
+                    main.style.marginLeft = '0';
+                }
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            const toc = document.getElementById('toc');
+            const main = document.getElementById('main-content');
+            if (toc.classList.contains('open') && window.innerWidth > 1024) {
+                main.style.marginLeft = '300px';
+            } else {
+                main.style.marginLeft = '0';
+            }
+        });
+    </script>
+</body></html>
